@@ -1,3 +1,9 @@
+import Footer from '@/components/Footer';
+
 export default function Home() {
-  return <main>Hello World!</main>;
+  return (
+    <main>
+      <Footer />
+    </main>
+  );
 }
