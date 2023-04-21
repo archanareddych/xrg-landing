@@ -9,6 +9,7 @@ import {
   Burger,
 } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
+import NavBar from './NavBar';
 
 const Header = () => {
   const [opened, setOpened] = useState(false);
@@ -80,6 +81,13 @@ const Header = () => {
 
   return (
     <HeaderMan height={{ base: 60 }} p="md">
+      {
+        <NavBar
+          links={links}
+          opened={opened}
+          close={() => setOpened((o) => !o)}
+        />
+      }
       <Container>
         <Group position="apart">
           <span>Logo</span>
