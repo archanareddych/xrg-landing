@@ -1,13 +1,18 @@
+import { useState } from 'react';
 import {
   Container,
   Button,
   Group,
   Header as HeaderMan,
   Menu,
+  MediaQuery,
+  Burger,
 } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 
 const Header = () => {
+  const [opened, setOpened] = useState(false);
+
   const links = [
     {
       title: 'Services',
@@ -78,11 +83,21 @@ const Header = () => {
       <Container>
         <Group position="apart">
           <span>Logo</span>
-          <Group position="center" spacing="sm">
-            {links.map((link) => {
-              return renderLink(link);
-            })}
-          </Group>
+          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+            <Burger
+              opened={opened}
+              onClick={() => setOpened((o) => !o)}
+              size="sm"
+              mr="xl"
+            />
+          </MediaQuery>
+          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+            <Group position="center" spacing="sm">
+              {links.map((link) => {
+                return renderLink(link);
+              })}
+            </Group>
+          </MediaQuery>
         </Group>
       </Container>
     </HeaderMan>
